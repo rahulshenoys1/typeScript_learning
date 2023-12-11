@@ -86,7 +86,7 @@ r1.question("Enter the elements(comma-separated): ", (input) => {
   printElemenntsInEvenOddPosition(elements);
 
   r1.close();
-}); */
+}); 
 
 // 8. program to print the sum of all the items of an array
 
@@ -107,4 +107,58 @@ r1.question("Enter elements for the array(comma-seperated): ", (input) => {
   console.log(`Sum of array elements: ${sum}`);
 
   r1.close();
+}); 
+
+//9. program to print the product of all the items of an array
+
+const r1 = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
+
+function calculateProduct(array: number[]): number {
+  return array.reduce((product, current) => product * current, 1);
+}
+
+r1.question("Enter elements for the array(comma-seperated): ", (input) => {
+  const numbers: number[] = input.split(",").map(Number);
+
+  const product: number = calculateProduct(numbers);
+
+  console.log(`product of array elements:${product}`);
+
+  r1.close();
+}); */
+
+//10. program to print the even and odd numbers present in an array
+const r1 = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
+
+function seperateEvenOddNumbers(array: number[]): {
+  even: number[];
+  odd: number[];
+} {
+  const evenNumbers: number[] = [];
+  const oddNumbers: number[] = [];
+
+  for (const number of array) {
+    if (number % 2 === 0) {
+      evenNumbers.push(number);
+    } else {
+      oddNumbers.push(number);
+    }
+  }
+
+  return { even: evenNumbers, odd: oddNumbers };
+}
+
+r1.question("Enter elements for the array(comma -seperated):", (input) => {
+  const numbers: number[] = input.split(",").map(Number);
+
+  const result = seperateEvenOddNumbers(numbers);
+
+  console.log("Even numbers: ", result.even);
+  console.log("odd numbers: ", result.odd);
 });

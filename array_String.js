@@ -84,18 +84,71 @@ r1.question("Enter the elements(comma-separated): ", (input) => {
   printElemenntsInEvenOddPosition(elements);
 
   r1.close();
-}); */
+});
+
 // 8. program to print the sum of all the items of an array
+
+const r1 = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
+
+function calculateSum(array: number[]): number {
+  return array.reduce((sum, current) => sum + current, 0);
+}
+
+r1.question("Enter elements for the array(comma-seperated): ", (input) => {
+  const numbers: number[] = input.split(",").map(Number);
+
+  const sum: number = calculateSum(numbers);
+
+  console.log(`Sum of array elements: ${sum}`);
+
+  r1.close();
+});
+
+//9. program to print the product of all the items of an array
+
+const r1 = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
+
+function calculateProduct(array: number[]): number {
+  return array.reduce((product, current) => product * current, 1);
+}
+
+r1.question("Enter elements for the array(comma-seperated): ", (input) => {
+  const numbers: number[] = input.split(",").map(Number);
+
+  const product: number = calculateProduct(numbers);
+
+  console.log(`product of array elements:${product}`);
+
+  r1.close();
+}); */
+//10. program to print the even and odd numbers present in an array
 var r1 = readline.createInterface({
     input: process.stdin,
     output: process.stdout
 });
-function calculateSum(array) {
-    return array.reduce(function (sum, current) { return sum + current; }, 0);
+function seperateEvenOddNumbers(array) {
+    var evenNumbers = [];
+    var oddNumbers = [];
+    for (var _i = 0, array_1 = array; _i < array_1.length; _i++) {
+        var number = array_1[_i];
+        if (number % 2 === 0) {
+            evenNumbers.push(number);
+        }
+        else {
+            oddNumbers.push(number);
+        }
+    }
+    return { even: evenNumbers, odd: oddNumbers };
 }
-r1.question("Enter elements for the array(comma-seperated): ", function (input) {
+r1.question("Enter elements for the array(comma -seperated):", function (input) {
     var numbers = input.split(",").map(Number);
-    var sum = calculateSum(numbers);
-    console.log("Sum of array elements: ".concat(sum));
-    r1.close();
+    var result = seperateEvenOddNumbers(numbers);
+    console.log("Even numbers: ", result.even);
+    console.log("odd numbers: ", result.odd);
 });
