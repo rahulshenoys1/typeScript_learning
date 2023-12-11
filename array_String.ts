@@ -35,7 +35,7 @@ const myArray: number[] = input.split(",").map(Number); // split is used to conv
 const reverseArray: number[] = [...myArray].reverse(); // ... used for shallow copy, reverse function is  used ro reverse the elements.
 
 console.log("Orginal Array: ", myArray);
-console.log("reversed Array: ", reverseArray); */
+console.log("reversed Array: ", reverseArray); 
 
 //4. program to copy all the elements of one array to another.
 
@@ -48,13 +48,63 @@ function copyArray(source: number[]): number[] {
   return [...source];
 }
 
-r1.question("Enter elements for the source array(comma-seperated): ", (input) => {
-    const sourceArray: number[] = input.split(',').map(Number);
+r1.question(
+  "Enter elements for the source array(comma-seperated): ",
+  (input) => {
+    const sourceArray: number[] = input.split(",").map(Number);
 
     const destinationArray: number[] = copyArray(sourceArray);
 
     console.log("Source Array: ", sourceArray);
-    console.log("Destination Array: ",destinationArray);
-    
+    console.log("Destination Array: ", destinationArray);
+
     r1.close();
-})
+  }
+); 
+
+// 6. program to print the elements of an array of an array present on even position and also odd position
+const r1 = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
+
+function printElemenntsInEvenOddPosition(elements: string[]): void {
+  console.log("Elements in even positions: ");
+  for (let i = 0; i < elements.length; i += 2) {
+    console.log(elements[i]);
+  }
+
+  console.log("\n Elements in odd position");
+  for (let i = 1; i < elements.length; i += 2) {
+    console.log(elements[i]);
+  }
+}
+
+r1.question("Enter the elements(comma-separated): ", (input) => {
+  const elements: string[] = input.split(",");
+
+  printElemenntsInEvenOddPosition(elements);
+
+  r1.close();
+}); */
+
+// 8. program to print the sum of all the items of an array
+
+const r1 = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
+
+function calculateSum(array: number[]): number {
+  return array.reduce((sum, current) => sum + current, 0);
+}
+
+r1.question("Enter elements for the array(comma-seperated): ", (input) => {
+  const numbers: number[] = input.split(",").map(Number);
+
+  const sum: number = calculateSum(numbers);
+
+  console.log(`Sum of array elements: ${sum}`);
+
+  r1.close();
+});
